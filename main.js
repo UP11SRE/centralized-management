@@ -5,7 +5,7 @@ const app = express();
 require('dotenv').config();
 const redis = require('./redisClient');
 
-console.log("redis", redis);
+console.log("redis--->", redis);
 
 const PORT = process.env.PORT;
 
