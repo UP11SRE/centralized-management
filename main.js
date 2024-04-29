@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const routes = require('./router/routes');
 const app = express();
 require('dotenv').config();
+const redis = require('./redisClient');
+
+console.log("redis", redis);
 
 const PORT = process.env.PORT;
 
