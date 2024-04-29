@@ -13,7 +13,7 @@ async getAllConfig (environment,service){
 },
 async setConfig (environment,service, args){
     try{
-    return  await configRepository.setConfig(environment,service,ags);
+    return  await configRepository.setConfig(environment,service,args);
     }
     catch(error){
         console.log("error in setconfig",error);
