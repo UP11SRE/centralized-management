@@ -13,9 +13,16 @@ const PORT = process.env.PORT;
 app.use(bodyParser.json());
 app.use('/api/v1', routes);
 
-app.get('/', (req, res) => {
-    res.status(200).send(redis); 
-  });
+app.get('/', async (req, res) => {
+    try {
+        // Check if the Redis client is connected
+        const result = await redis.ping();
+        res.status(200).json({ message: 'Redis is connected' });
+    } catch (error) {
+        console.error('Error checking Redis connection:', error);
+        res.status(500).json({ error: 'Failed to connect to Redis' });
+    }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
